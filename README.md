@@ -1,7 +1,7 @@
 # inventory-application
 
 ## Live
-https://inventory-application-kgod.onrender.com/
+https://inventory-ml9n.onrender.com/
 
 ## Description
 TOP - Inventory Application project
