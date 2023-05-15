@@ -4,9 +4,6 @@ body {
   background: #eee;
   margin: 0; }
 
-h2 {
-  color: teal; }
-
 h2.small, label {
   display: block;
   color: #224;
@@ -23,17 +20,20 @@ img {
 button {
   cursor: pointer; }
 
-a:not(.default) {
-  color: inherit;
-  font-weight: 600;
-  text-decoration: none; }
-  a:not(.default):hover {
+a {
+  color: currentColor; }
+  a:hover {
     color: teal; }
 
-a.teal {
+a.simple, a.button-link, .form-footer a {
+  text-decoration: none;
+  font-weight: 600; }
+
+.teal {
   color: teal; }
-  a.teal:hover {
-    color: inherit; }
+
+a.teal:hover {
+  color: #224; }
 
 fieldset {
   margin: 20px 2px; }
@@ -71,6 +71,9 @@ header {
   justify-content: space-around; }
   header a {
     font-size: 1.2rem; }
+    header a:hover {
+      color: currentColor;
+      opacity: .8; }
 
 .wrapper {
   display: grid;
@@ -133,12 +136,14 @@ header {
 .button-link {
   display: inline-block;
   border: 2px dotted teal;
-  padding: 10px; }
+  padding: 10px;
+  background: none; }
   .button-link:hover {
-    border-style: solid;
-    color: currentColor !important; }
+    border-style: solid; }
   .button-link.delete {
     border-color: #f00; }
+  .button-link:hover {
+    color: currentColor; }
 
 .thumbnail {
   width: 100px;
@@ -186,7 +191,8 @@ header {
   border: 1px solid transparent;
   padding: 8px; }
   .form-footer a:hover {
-    border-color: #f00; }
+    border-color: #f00;
+    color: currentColor; }
 
 .item-image-container {
   margin-top: 32px;

@@ -7,9 +7,9 @@ block content
 			p There are still items which belong to this category. You must change the category of the following items or delete them before this category can be deleted:
 			each item of items
 				div.item
-					h2
-						a(href=item.url) #{item.name}
-					p.m16= item.description
+					h2.teal
+						a.simple.teal(href=item.url) #{item.name}
+					p= item.description
 					img.thumbnail(src=item.thumbnail, alt='item.name')
 
 		if !items.length

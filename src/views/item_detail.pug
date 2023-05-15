@@ -5,7 +5,7 @@ block title
 
 block content
 	main(class='item-detail')
-		h2= item.name
+		h2.teal= item.name
 		ul.m0.p0
 			li.columns
 				<span class='key'>Description</span>
@@ -13,7 +13,7 @@ block content
 			li.columns
 				<span class='key'>Category</span>
 				<span>
-					a.default(href=item.category.url) #{item.category.name}
+					a.hover-teal(href=item.category.url) #{item.category.name}
 				</span>
 			li.columns
 				<span class='key'>Price</span>

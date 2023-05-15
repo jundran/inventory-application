@@ -2,11 +2,14 @@
 	display: inline-block
 	border: 2px dotted teal
 	padding: 10px
+	@extend .simple
+	background: none
 	&:hover
 		border-style: solid
-		color: currentColor !important
 	&.delete
 		border-color: #f00
+	&:hover
+		color: currentColor
 
 .thumbnail
 	width: 100px
@@ -52,8 +55,10 @@
 		margin-left: 16px
 		border: 1px solid transparent
 		padding: 8px
+		@extend .simple
 		&:hover
 			border-color: #f00
+			color: currentColor
 
 .item-image-container
 	margin-top: 32px

@@ -5,18 +5,18 @@ block title
 
 block content
 	main
-		h2= category.name
+		h2.teal= category.name
 		ul.m0.p0
 			each item in items
 				li.columns
 					div
-						a(href=item.url) #{item.name}
+						a.simple(href=item.url) #{item.name}
 						p.m0 $#{item.price}
 					img(src=item.thumbnail alt=`${item.name} thumbnail`)
 			else
 				li.rows
 					p This category has no items
-					a.default-style(href='/inventory/category') Categories List
+					a(href='/inventory/category') Categories List
 
 		div.actions
 			a.button-link(href=`/inventory/category/${category._id}/update`) Update Category

@@ -4,9 +4,6 @@ body
 	background: #eee
 	margin: 0
 
-h2
-	color: teal
-
 h2.small, label
 	display: block
 	color: $colour-text
@@ -23,17 +20,20 @@ img
 button
 	cursor: pointer
 
-a:not(.default)
-	color: inherit
-	font-weight: 600
-	text-decoration: none
+a
+	color: currentColor
 	&:hover
 		color: teal
 
-a.teal
+a.simple
+	text-decoration: none
+	font-weight: 600
+
+.teal
 	color: teal
-	&:hover
-		color: inherit
+
+a.teal:hover
+	color: #224
 
 fieldset
 	margin: 20px 2px
