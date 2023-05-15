@@ -1,0 +1,20 @@
+extends layout
+
+block content
+	main
+		h1 Inventory Application
+		p Welcome to the Odin Project Inventory Application. This is a server side application hooked to a MongoDB Atlas database, serving PUG templates using Express.
+		h2 Inventory Statistics
+		ul.stats
+			li
+				span Categories: 
+				span= numCategories
+			li
+				span Unique Items: 
+				span= numItems
+			li
+				span Total value of unique items: 
+				span $#{totalValueUnique}
+			li
+				span Total Value of all stock: 
+				span $#{totalValueAllStock}

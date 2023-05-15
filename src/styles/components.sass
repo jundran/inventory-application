@@ -1,0 +1,88 @@
+.button-link
+	display: inline-block
+	border: 2px dotted teal
+	padding: 10px
+	&:hover
+		border-style: solid
+		color: currentColor !important
+	&.delete
+		border-color: #f00
+
+.thumbnail
+	width: 100px
+	height: 100px
+	object-fit: cover
+	border: 2px solid #222
+	border-radius: 8px
+	margin-bottom: 16px
+	&.small
+		width: 80px
+		height: 80px
+
+.text-button
+	border: none
+	background: none
+	color: $colour-text-light
+	padding: 0
+	&:hover
+		color: #000
+
+.image-container
+	display: flex
+	flex-wrap: wrap
+	gap: 20px
+	.image-select
+		position: relative
+		input
+			position: absolute
+			top: 4px
+			left: 4px
+
+.form-footer
+	button
+		margin: 8px 0
+		padding: 8px 32px
+		border: 1px solid teal
+		color: teal
+	button, a
+		border-radius: 2px
+		font-size: .8rem
+		font-weight: 600
+	a
+		margin-left: 16px
+		border: 1px solid transparent
+		padding: 8px
+		&:hover
+			border-color: #f00
+
+.item-image-container
+	margin-top: 32px
+	display: grid
+	grid-template-columns: repeat(auto-fit, 300px)
+	// FF only with flag
+	// https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Masonry_Layout
+	grid-template-rows: masonry
+	gap: 16px
+	img
+		max-width: 100%
+
+.stats
+	li
+		margin-bottom: 16px
+
+.actions
+	display: flex
+	gap: 32px
+	margin: 16px 0
+
+.errors-box
+	padding: 16px
+	border: 2px dashed #f00
+	border-radius: 2px
+	margin-bottom: 20px
+
+@media (max-width: $mobile)
+	.actions
+		flex-direction: column
+		gap: 8px
+		width: fit-content

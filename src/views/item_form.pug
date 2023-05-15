@@ -1,0 +1,114 @@
+extends layout
+
+block title
+	title= title || item.name
+
+block content
+	main
+		include includes/errors_box
+		form(method='POST' action='' enctype='multipart/form-data')
+			fieldset
+				legend Information
+				ul.m0.p0
+					li.columns
+						label(for="name") Name
+						input.value(name='name' placeholder='Item name' value=item.name required)
+					li.columns
+						label(for="description") Description
+						textarea.value(
+							name='description'
+							placeholder='Item description'
+							required
+						) #{item.description}
+					li.columns
+						label(for="category") Category
+						select(name='category' placeHolder='Select category' required)
+							each category in categories
+								if item
+									option(
+										value=category._id,
+										selected=(
+											category._id.toString() === item.category._id.toString() ?
+												'selected' : false
+										)
+									) #{category.name}
+								else
+									option(value=category._id) #{category.name}
+					li.columns
+						label(for="price") Price
+						input.value(type='number' step='0.01' name='price'
+							placeholder='Item price' value=item.price required
+						)
+					li.columns
+						label(for="stock_count") Stock Count
+						input.value(type='number' name='stock_count'
+							placeholder='Item stock count' value=item.stock_count required
+						)
+					li.columns
+						label(for="discount_percentage") Discount Percentage
+						input.value(type='number' step='0.01' name='discount_percentage'
+							placeholder='Item discount percentage' value=item.discount_percentage required
+						)
+					li.columns
+						label(for="rating") Rating
+						input.value(type='number' step='0.01' name='rating'
+							placeholder='Item rating' value=item.rating required
+						)
+					li.columns
+						label(for="brand") Brand
+						input.value(name='brand' placeholder='Item brand' value=item.brand required)
+			fieldset
+				- acceptedTypes= 'gif | jpg | jpeg | jfif | pjpeg | pjp | png | svg | webp'
+				- acceptedInputs= '.gif, .jpg, .jpeg, .jfif, .pjpeg, .pjp, .png, .svg, .webp'
+				legend Thumbnail and Images
+				ul.m0.p0
+					li.rows
+						h2.small Current thumbnail
+						img.thumbnail.small(src=item.thumbnail, alt='Current thumbnail')
+					li.rows
+						label(for='thumbnailUpload') Upload new thumbnail
+						input.db.m0(
+							id='input-thumbnail'
+							type='file'
+							name='thumbnailUpload'
+							accept= acceptedInputs
+						)
+						button.text-button(
+							type='button'
+							onclick='handleClearFiles("input-thumbnail")'
+						) [clear files]
+						p.subtext= acceptedTypes
+					hr
+					li.rows
+						if item.images.length
+							h2.small Deselect images to remove
+							div.image-container
+								each imageUrl in item.images
+									div.image-select
+										input(
+											name='images'
+											aria-label='Deselect to remove image'
+											type='checkbox' value=imageUrl checked
+										)
+										img.thumbnail(src=imageUrl, alt=item.name)
+					li.rows
+						label(for='imageUploads') Upload new image
+						input.db.m0(
+							id='input-images'
+							type='file'
+							name='imageUploads'
+							multiple
+							accept= acceptedInputs
+						)
+						button.text-button(type='button'
+							onclick='handleClearFiles("input-images")'
+						) [clear files]
+						p.subtext= acceptedTypes
+			div.form-footer
+				button Save Item
+				a(href=item.url ? item.url : '/') Cancel
+
+	script.
+		function handleClearFiles (id) {
+			document.getElementById(id).value=''
+		}

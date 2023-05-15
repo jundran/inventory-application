@@ -1,0 +1,42 @@
+extends layout
+
+block title
+	title= item.name
+
+block content
+	main(class='item-detail')
+		h2= item.name
+		ul.m0.p0
+			li.columns
+				<span class='key'>Description</span>
+				<span>#{item.description}</span>
+			li.columns
+				<span class='key'>Category</span>
+				<span>
+					a.default(href=item.category.url) #{item.category.name}
+				</span>
+			li.columns
+				<span class='key'>Price</span>
+				<span>$#{item.price}</span>
+			li.columns
+				<span class='key'>Stock Count</span>
+				<span>#{item.stock_count}</span>
+			li.columns
+				<span class='key'>Discount Percentage</span>
+				<span>#{item.discount_percentage}%</span>
+			li.columns
+				<span class='key'>Rating</span>
+				<span>#{item.rating}</span>
+			li.columns
+				<span class='key'>Brand</span>
+				<span>#{item.brand}</span>
+			li.columns
+				<span class='key'>Thumbnail</span>
+				img(src=item.thumbnail, alt='thumbnail')
+		div.actions
+			a.button-link(href=`/inventory/item/${item._id}/update`) Update Item
+			a.button-link.delete(href=`/inventory/item/${item._id}/delete`) Delete Item
+
+		div.item-image-container
+			each image in item.images
+				img(src=image, alt=item.name)

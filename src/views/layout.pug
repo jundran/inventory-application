@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		link(rel='shortcut icon', href='/favicon.png' type='image/png')
+		link(rel='stylesheet', href='/index.css')
+		block title
+			title= 'Inventory'
+	body
+		header
+			a(href='/') Home
+			a(href='/inventory/category') Categories
+			a(href='/inventory/category/create') Add Category
+			a(href='/inventory/item/create') Add Item
+
+		div.wrapper
+			div(class='sidebar')
+				h2= 'Categories'
+				ul.m0.p0
+					each category in categories
+						li
+							a(href=category.url) #{category.name}
+
+			block content

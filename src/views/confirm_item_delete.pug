@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	main
+		h1= document.name
+		if document.thumbnail
+			img(src=document.thumbnail, alt=document.name)
+		form(action='' method='POST')
+			p.m32 #{`Are you sure that you want to delete this ${type}?`}
+			button.button-link.delete Delete

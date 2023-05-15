@@ -1,0 +1,61 @@
+body
+	font-family: sans-serif
+	color: $colour-text
+	background: #eee
+	margin: 0
+
+h2
+	color: teal
+
+h2.small, label
+	display: block
+	color: $colour-text
+	font-size: 16px
+	font-weight: 600
+
+p
+	word-wrap: break-word
+
+img
+	max-width: 300px
+	max-height: 500px
+
+button
+	cursor: pointer
+
+a:not(.default)
+	color: inherit
+	font-weight: 600
+	text-decoration: none
+	&:hover
+		color: teal
+
+a.teal
+	color: teal
+	&:hover
+		color: inherit
+
+fieldset
+	margin: 20px 2px
+	&:last-of-type
+		margin: 20px 2px 0 2px
+
+legend
+	font-weight: 600
+
+textarea, input:not([type='file']), select
+	font-size: .9rem
+	font-family: inherit
+	padding: 4px
+	max-width: 600px
+	box-sizing: content-box
+
+textarea
+	height: 80px
+
+dl
+	max-width: 700px
+dt
+	margin-bottom: 4px
+dd
+	margin-bottom: 16px

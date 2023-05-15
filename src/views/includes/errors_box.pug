@@ -1,0 +1,8 @@
+h2= heading
+if errors.length
+	div.errors-box
+		p
+			strong Unable to save item. Please correct the following errors and try again:
+		ul
+			each error in errors
+				li #{error}

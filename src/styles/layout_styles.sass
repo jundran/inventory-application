@@ -1,0 +1,30 @@
+.db
+	display: block
+
+.rows
+	list-style: none
+	> *
+		margin-bottom: 16px
+
+.columns
+	display: grid
+	grid-template-columns: 300px 1fr
+	align-items: center
+	gap: 16px
+	margin-bottom: 16px
+	img
+		height: 48px
+		width: 48px
+		object-fit: cover
+
+.m0
+	margin: 0
+.m32
+	margin: 32px 0
+.p0
+	padding: 0
+
+@media (max-width: $mobile)
+	.columns
+		grid-template-columns: 1fr
+		gap: 4px

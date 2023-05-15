@@ -1,0 +1,14 @@
+extends layout
+
+block title
+	title= 'Categories'
+
+block content
+	main
+		dl
+			each category, index in categories
+				dt
+					a.teal(href=category.url) #{category.name}
+				dd #{category.description}
+			else
+				dt There are no categories

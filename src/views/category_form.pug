@@ -1,0 +1,22 @@
+extends layout
+
+block title
+	title= title || category.name
+
+block content
+	main
+		include includes/errors_box
+		form(method='POST' action='')
+			ul.m0.p0
+				li.columns
+					label(for="name") Name
+					input.value(name='name' placeholder='Category name' value=category.name required)
+				li.columns
+					label(for="description") Description
+					textarea.value(
+						name='description'
+						placeholder='Category description' required
+					) #{category.description}
+			div.form-footer
+				button Save Category
+				a(href=category.url ? category.url : '/inventory/category') Cancel

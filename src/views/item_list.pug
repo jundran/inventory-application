@@ -1,0 +1,23 @@
+extends layout
+
+block title
+	title= category.name
+
+block content
+	main
+		h2= category.name
+		ul.m0.p0
+			each item in items
+				li.columns
+					div
+						a(href=item.url) #{item.name}
+						p.m0 $#{item.price}
+					img(src=item.thumbnail alt=`${item.name} thumbnail`)
+			else
+				li.rows
+					p This category has no items
+					a.default-style(href='/inventory/category') Categories List
+
+		div.actions
+			a.button-link(href=`/inventory/category/${category._id}/update`) Update Category
+			a.button-link.delete(href=`/inventory/category/${category._id}/delete`) Delete Category
