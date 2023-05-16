@@ -10,3 +10,6 @@ This is a server side application hooked to a MongoDB Atlas database, serving PU
 
 ## Requriements
 https://www.theodinproject.com/lessons/nodejs-inventory-application
+
+## Data
+Database initially populated with item and category data fetched from https://dummyjson.com/
