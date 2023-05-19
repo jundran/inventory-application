@@ -4,7 +4,7 @@ body {
   background: #eee;
   margin: 0; }
 
-h2.small, label {
+label, .small-heading {
   display: block;
   color: #224;
   font-size: 16px;
@@ -22,18 +22,6 @@ button {
 
 a {
   color: currentColor; }
-  a:hover {
-    color: teal; }
-
-a.simple, a.button-link, .form-footer a {
-  text-decoration: none;
-  font-weight: 600; }
-
-.teal {
-  color: teal; }
-
-a.teal:hover {
-  color: #224; }
 
 fieldset {
   margin: 20px 2px; }
@@ -233,3 +221,16 @@ header {
 
 .key {
   font-weight: 600; }
+
+.simple, .button-link, .form-footer a {
+  text-decoration: none;
+  font-weight: 600; }
+
+.teal {
+  color: teal; }
+
+a.teal:hover {
+  color: #224; }
+
+.fancy-hover:hover {
+  color: teal; }

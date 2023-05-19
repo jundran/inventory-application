@@ -10,7 +10,7 @@ block content
 			each item in items
 				li.columns
 					div
-						a.simple(href=item.url) #{item.name}
+						a.simple.fancy-hover(href=item.url) #{item.name}
 						p.m0 $#{item.price}
 					img(src=item.thumbnail alt=`${item.name} thumbnail`)
 			else

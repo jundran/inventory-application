@@ -20,6 +20,9 @@ html(lang="en")
 				ul.m0.p0
 					each category in categories
 						li
-							a.simple(href=category.url) #{category.name}
+							a.simple.fancy-hover(href=category.url) #{category.name}
+					else
+						li
+							a.simple(href='inventory/category/create') Create a category
 
 			block content

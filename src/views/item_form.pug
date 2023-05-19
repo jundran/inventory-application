@@ -63,7 +63,7 @@ block content
 				legend Thumbnail and Images
 				ul.m0.p0
 					li.rows
-						h2.teal.small Current thumbnail
+						h2.teal.small-heading Current thumbnail
 						img.thumbnail.small(src=item.thumbnail, alt='Current thumbnail')
 					li.rows
 						label(for='thumbnailUpload') Upload new thumbnail
@@ -81,7 +81,7 @@ block content
 					hr
 					li.rows
 						if item.images.length
-							h2.teal.small Deselect images to remove
+							h2.teal.small-heading Deselect images to remove
 							div.image-container
 								each imageUrl in item.images
 									div.image-select
