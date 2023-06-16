@@ -7,12 +7,6 @@ export function formatName (name) {
 	return name.charAt().toUpperCase() + name.slice(1).replace('-', ' ')
 }
 
-export function createError (message, code) {
-	const error = new Error(message)
-	error.status = code
-	return error
-}
-
 export async function sendErrorPage (res, message, statusCode) {
 	res.statusCode = statusCode
 	res.render('error', {

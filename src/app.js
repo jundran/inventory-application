@@ -16,8 +16,7 @@ app.use('/', indexRouter)
 
 // Catch 404
 app.use((req, res, next) => {
-	console.log('404 middleware')
-	res.render('error', { message: 'Page Not found - 404'})
+	res.render('error', { message: 'Page Not found - 404' })
 })
 
 // Error handler
