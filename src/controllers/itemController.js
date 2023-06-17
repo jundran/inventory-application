@@ -113,7 +113,7 @@ export const itemDeleteGet = asyncHandler(async (req, res, next) => {
 })
 
 export const itemDeletePost = asyncHandler(async (req, res, next) => {
-	const document = await Item.findByIdAndRemove(req.params.id).exec()
+	const document = await Item.findByIdAndRemove(req.params.id).populate('category').exec()
 	if (document) res.redirect(document.category.url)
 
 	// If user uses back button to return to delete confirmation page and tries
