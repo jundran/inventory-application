@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs'
+import { join, resolve } from 'node:path'
 import { body } from 'express-validator'
 import asyncHandler from '../asyncHandler.js'
 import { getImages, getThumbnail, removeDeletedImagesFromStorage } from '../multer.js'
@@ -5,14 +7,44 @@ import { getAllCategoryDocuments } from './categoryController.js'
 import Item from '../models/item.js'
 import { THUMBNAIL_DEFAULT, sendErrorPage, addErrorsToRequestObject } from '../utils.js'
 
+// PUG throws an error when trying to create an image element from an image source that
+// does not exist on disk even though it still sends back the page and uses the image alt.
+// Render.com does not persist file storage between restarts with free tier.
+// This is a work around and would not be needed with paid service.
+function removeMissingImages (item) {
+	// Check for missing thumbnail file on disk
+	if (
+		!item.thumbnail.startsWith('http') &&
+		item.thumbnail !== THUMBNAIL_DEFAULT &&
+		!existsSync(join(resolve(), 'src', 'public', item.thumbnail))
+	) {
+		item.thumbnail = THUMBNAIL_DEFAULT
+	}
+
+	// Check for missing image files on disk
+	const missing = []
+	for (const imagePath of item.images) {
+		if (imagePath.startsWith('http')) continue
+		if (!existsSync(join(resolve(), 'src', 'public', imagePath))) {
+			missing.push(imagePath)
+		}
+	}
+	item.images = item.images.filter(image => !missing.includes(image))
+
+	// Update database - don't need to await unused result but need to call exec
+	Item.findByIdAndUpdate(item._id.toString(), item, { new: true }).exec()
+	return item
+}
+
 export const itemDetail = asyncHandler(async (req, res, next) => {
 	const itemId = req.params.id
 	const item = await Item.findById(itemId).populate('category').exec()
 	if (!item) return sendErrorPage(res, 'Item not found', 404)
+	const filteredItem = removeMissingImages(item)
 
 	res.render('item_detail', {
 		categories: await getAllCategoryDocuments(),
-		item
+		item: filteredItem
 	})
 })
 
