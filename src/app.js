@@ -33,7 +33,7 @@ app.use(async (err, req, res, next) => {
 	}
 })
 
-const port = 5000
+const port = process.env.PORT || 5000
 export default () => app.listen(
 	port,
 	() => console.log(`Server listening on port ${port}`)
