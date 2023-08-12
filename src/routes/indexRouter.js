@@ -55,6 +55,7 @@ function uploadFile (req, res, next) {
 }
 
 router.get('/', homepage)
+router.get('/health-check', (req, res) => res.sendStatus(200))
 router.get('/inventory/category', categoryListDetail)
 
 router.get('/inventory/category/create', categoryCreateGet)
